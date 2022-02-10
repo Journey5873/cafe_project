@@ -5,10 +5,7 @@
 <head>
 <meta charset="EUC-KR">
 <title>Footer</title>
-<link href="./css/index.css" rel="stylesheet" type="text/css" />
-</head>
-<body>
-	<script>
+<script>
 		function changeView(value){
 			if(value=="0")
 				location.href="index.jsp?contentPage=terms_of_use.jsp";
@@ -19,19 +16,23 @@
 			else if(value=="3")
 				location.href="index.jsp?contentPage=index_notice.jsp";	
 		}
-	</script>
-	
+</script>
+</head>
+<body>
 	<footer class="foot">
+	
 		<div align="center" class="text-box">
-			<span class="footer-aTag" onclick="changeView(0)" style="cursor: pointer">이용약관</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<span class="footer-aTag" onclick="changeView(1)" style="cursor: pointer">커뮤니티</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<span class="footer-aTag" onclick="changeView(2)" style="cursor: pointer">찾아오시는길</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<span class="footer-aTag" onclick="changeView(3)" style="cursor: pointer">공지사항</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<span class="footer-menu" onclick="changeView(0)">이용약관</span>
+			<span class="footer-menu" onclick="changeView(1)">커뮤니티</span>
+			<span class="footer-menu" onclick="changeView(2)">찾아오시는길</span>
+			<span class="footer-menu" onclick="changeView(3)">공지사항</span>
 		</div>
-		<div class="copyright">
+		
+        <div class="copyright">
               <span>Copyright ⓒ 2022 DongDuk.Computer_Science.</span>
               <span>All Rights Reserved.</span>
         </div>
 	</footer>
+	
 </body>
 </html>

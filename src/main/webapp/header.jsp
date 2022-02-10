@@ -5,10 +5,7 @@
 <head>
 <meta charset="EUC-KR">
 <title>Header</title>
-</head>
-<link href="./css/index.css" rel="stylesheet" type="text/css" />
-<body>
-	<script>
+<script>
 		function changeView1(value){
 			if(value=="0")
 				location.href="index.jsp?contentPage=firstview.jsp";
@@ -19,8 +16,10 @@
 			else if(value=="3")
 				location.href="index.jsp?contentPage=test.jsp";
 		}
-	</script>
-	
+
+</script>
+</head>
+<body>
 	<!-- 로그인 변화에 따른 마이페이지, 장바구니 코드 넣고 -->
 	<header class="header">
 		<% 

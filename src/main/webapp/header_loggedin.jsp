@@ -8,12 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 	<div align="center" class="text-box">
-			<span class="header-aTag" onclick="changeView1(0)" style="cursor: pointer">카페 HOME</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<span class="header-aTag" onclick="changeView1(1)" style="cursor: pointer">카페 소개</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<span class="header-aTag" onclick="changeView1(2)" style="cursor: pointer">메뉴 소개</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<span class="header-aTag" onclick="changeView1(3)" style="cursor: pointer">게시판</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<span class="header-menu" onclick="changeView1(0)" style="cursor: pointer; padding-right: 30px">카페 HOME</span>
+			<span class="header-menu" onclick="changeView1(1)" style="cursor: pointer; padding-right: 30px">카페 소개</span>
+			<span class="header-menu" onclick="changeView1(2)" style="cursor: pointer; padding-right: 30px">메뉴 소개</span>
+			<span class="header-menu" onclick="changeView1(3)" style="cursor: pointer; padding-right: 30px">게시판</span>
 	</div>
 
 	<div class="logo-box">

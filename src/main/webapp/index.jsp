@@ -13,7 +13,6 @@
 <meta charset="EUC-KR">
 <title>index</title>
 <link href="./css/index.css" rel="stylesheet" type="text/css" />
-
 </head>
 <body onload="javascript:openPopup('popup.html')">
 	<%-- 팝업창으로 영업시간 띄우기 --%>
@@ -30,17 +29,19 @@
 				}
 			}
 			return;
+			
 		}
 		
 		function openPopup(url) {
 			var cookieCheck = getCookie("popupYN");
 			if (cookieCheck != "N") window.open("popup.html",'popup','width=450,height=270,left=0,top=0')
 		}
+		
 	</script>
 
 	<div id="wrap">
-		<div id="header">
-			<jsp:include page="header.jsp" />
+		<div id="header_inclu">
+			<jsp:include page="header.jsp"/>
 		</div>
 		<div id="main">
 			<jsp:include page="<%=contentPage%>" />
