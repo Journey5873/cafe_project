@@ -11,7 +11,7 @@
 	
 	<div class="firstview-body">
 	
-		<img id="coffee" src="./images/coffee.jpg">
+		<img id="coffee" src="./../images/coffee.jpg">
 	
 		<div class="body2" style="text-align: center;">
 		
