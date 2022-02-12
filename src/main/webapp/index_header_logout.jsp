@@ -17,7 +17,7 @@
 	
 	<div class="logo-box">
 		<a class="cart" href="./test.jsp"><img alt="shopping cart" src="./images/shopping_cart.png" class="cart-log"></a> 
-		<a class="man" href="./login/member.jsp"><img alt="ma
+		<a class="man" href="./login/login.jsp"><img alt="ma
 		n" src="./images/man.png" class="man-log"></a>
 	</div>
 </body>

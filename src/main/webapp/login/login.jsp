@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>LOGIN</title>
 
 <style>
 	 header{
@@ -34,7 +34,6 @@
                 color:#aaa;
                 font-size:14pt;
                 top:15px;
-
             }
             input:focus + label, label{
                 color:#8aa1a1;
@@ -48,7 +47,6 @@
                 -moz-transition: all 0.2s ease;
                 -o-transition: all 0.2s ease;
             }
-
             input:focus, input:not(:placeholder-shown){
                 border-bottom: solid 1px #8aa1a1;
                 outline:none;
@@ -70,7 +68,12 @@
                 color:rgb(164, 164, 164);
                 margin:10px 0px;
             }
-     
+     	a{
+     			text-align: center;
+                font-size:12pt;
+                color:rgb(164, 164, 164);
+                margin:10px 0px;
+     }
     
 	</style>
 	
@@ -80,15 +83,15 @@
           
 		  loginForm = eval("document.login_form");
           
-		  if(!loginForm.ID.value) {
+		  if(!loginForm.id.value) {
               alert("아이디를 입력하세요");    
-              loginForm.ID.focus();
+              loginForm.id.focus();
               return false;
           }
 		  
-          if(!loginForm.PWD.value) {
+          if(!loginForm.password.value) {
               alert("비밀번호를 입력하세요");    
-              loginForm.PWD.focus();
+              loginForm.password.focus();
               return false;
           }
       } 
@@ -96,7 +99,7 @@
     </script>
 </head>
 <body>
-<form name="login_form" action="login_action" onsubmit="return checkValue();" method='post'>
+<form name="login_form" action="login_action.jsp" onsubmit="return checkValue();" method="post">
  
             <header>
             <h1>SIGN IN</h1>
@@ -117,9 +120,10 @@
            
             <input type="submit" value="SIGN IN">
             
-            <div id="forgot">Forgot your password? </div>
-
-
+            <div id="forgot">Forgot your password? <p>
+            
+            <a href ="member.jsp" style="text-decoration:none">SIGN UP</a>
+            </div>
 
 </form>
 

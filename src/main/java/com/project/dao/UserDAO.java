@@ -21,6 +21,14 @@ public class UserDAO {
 	
 	public UserDAO() {
 		
+		try {
+			Class.forName(jdbc_driver);
+			conn = DriverManager.getConnection(jdbc_url, id, pw);
+		}
+		catch(Exception e) {
+			System.out.println(e);
+		}
+		
 	}
 	
 	public void UserInsert(UserDTO user) {
