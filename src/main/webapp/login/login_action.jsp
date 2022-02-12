@@ -41,7 +41,7 @@
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('로그인 성공')");
-		script.println("location.href='./../index.jsp'");
+		script.println("location.href='./../index/index.jsp'");
 		script.println("</script>");
 	}else if(result == 0){
 		PrintWriter script = response.getWriter();
