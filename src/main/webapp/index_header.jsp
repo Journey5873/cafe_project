@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Header</title>
+<title></title>
 <script>
 		function changeView1(value){
 			if(value=="0")
@@ -20,16 +20,20 @@
 </script>
 </head>
 <body>
-	<!-- 로그인 변화에 따른 마이페이지, 장바구니 코드 넣고 -->
-	<header class="header">
-		<% 
-		String id = (String)session.getAttribute("id");
-		if(id == null) {
-		%>
-		<jsp:include page="header_not_loggedin.jsp" />
-		<%} else {%>
-		<jsp:include page="header_loggedin.jsp" />
-		<%}%> 
+	<!-- index header -->
+	<header class="index-header">	
+	
+		<div class="header-nav">
+			<% 
+				String id = (String)session.getAttribute("id");
+				if(id == null) {
+			%>
+			<jsp:include page="index_header_logout.jsp" />
+			<%} else {%>
+			<jsp:include page="index_header_login.jsp" />
+			<%}%> 
+		</div>
+		
 	</header>
 </body>
 </html>

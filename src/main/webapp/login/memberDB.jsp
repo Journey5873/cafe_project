@@ -12,7 +12,6 @@
 </head>
 <body>
 <%
-
 	try{
 		request.setCharacterEncoding("utf-8");
 
