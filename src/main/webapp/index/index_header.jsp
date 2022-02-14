@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,13 +16,12 @@
 			else if(value=="3")
 				location.href="index.jsp?contentPage=test.jsp";
 		}
-
 </script>
 </head>
 <body>
 	<!-- index header -->
-	<header class="index-header">	
-	
+	<header class="index-header">
+
 		<div class="header-nav">
 			<% 
 				String id = (String)session.getAttribute("id");
@@ -31,9 +30,9 @@
 			<jsp:include page="index_header_logout.jsp" />
 			<%} else {%>
 			<jsp:include page="index_header_login.jsp" />
-			<%}%> 
+			<%}%>
 		</div>
-		
+
 	</header>
 </body>
 </html>

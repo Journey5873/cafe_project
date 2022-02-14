@@ -41,9 +41,17 @@
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('로그인 성공')");
+		script.println("location.href='./../admin/admin_index.jsp'");
+		script.println("</script>");
+	}else if(result == 2){
+		session.setAttribute("id", userID);
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('로그인 성공')");
 		script.println("location.href='./../index/index.jsp'");
 		script.println("</script>");
-	}else if(result == 0){
+	}
+	else if(result == 0){
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('비밀번호가 틀립니다')");

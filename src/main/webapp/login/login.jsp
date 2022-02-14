@@ -74,10 +74,9 @@
                 color:rgb(164, 164, 164);
                 margin:10px 0px;
      }
-    
-	</style>
+</style>
 	
-	  <script>
+<script>
 	  
 	  function checkValue() {
           
@@ -96,7 +95,7 @@
           }
       } 
     
-    </script>
+</script>
 </head>
 <body>
 <form name="login_form" action="login_action.jsp" onsubmit="return checkValue();" method="post">

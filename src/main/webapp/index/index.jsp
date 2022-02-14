@@ -19,6 +19,7 @@
 </head>
 
 <body onload="javascript:openPopup('popup.html')">
+
 	<%-- 팝업창으로 영업시간 띄우기 --%>
 	<script>
 		function getCookie(name) {

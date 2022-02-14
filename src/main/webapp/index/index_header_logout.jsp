@@ -4,8 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-
-<title>Insert title here</title>
+<title></title>
 </head>
 <body>
 	<div class="text-box">
