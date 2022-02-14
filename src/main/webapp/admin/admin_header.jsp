@@ -22,7 +22,7 @@ request.setCharacterEncoding("UTF-8");
 
 			<div class="logo-box">
 				<span class="welcom-id"><%=session.getAttribute("id")%>¥‘æ»≥Á«œººø‰</span>
-				<a class="mypage" href="./test.jsp">admin PAGE</a>
+				<a class="mypage" href="./admin_test.jsp">admin PAGE</a>
 			</div>
 		</div>
 

@@ -11,7 +11,7 @@ function changeFooter(value){
 
 function changeBody(value){
 			if(value=="0")
-				location.href="admin_index.jsp?contentPage=firstview.jsp";
+				location.href="admin_index.jsp?contentPage=admin_firstview.jsp";
 			else if(value=="1")
 				location.href="admin_index.jsp?contentPage=admin_menu.jsp";
 			else if(value=="2")
