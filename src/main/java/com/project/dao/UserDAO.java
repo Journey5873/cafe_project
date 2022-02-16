@@ -80,6 +80,13 @@ public class UserDAO {
 			return -1; //존재하지 않는 아이디
 		}catch (Exception e) {
 			System.out.println(e);// TODO: handle exception
+		}finally{
+			try{
+				pstmt.close();
+			}catch(Exception ignored){}
+			try{
+				conn.close();
+			}catch(Exception ignored){}
 		}
 		return -2; //데이터 베이스 오료
 	}
@@ -101,6 +108,13 @@ public class UserDAO {
 			}
 		}catch (Exception e) {
 			System.out.println(e);// TODO: handle exception
+		}finally{
+			try{
+				pstmt.close();
+			}catch(Exception ignored){}
+			try{
+				conn.close();
+			}catch(Exception ignored){}
 		}
 		return false;
 	}

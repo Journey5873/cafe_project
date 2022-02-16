@@ -33,6 +33,7 @@
 		userPassword = (String) request.getParameter("password");
 	
 	}
+	
 	UserDAO userDAO = new UserDAO();
 	int result = userDAO.login(userID, userPassword); // userDAO객체의 login메소드에서 리턴된 값
 	

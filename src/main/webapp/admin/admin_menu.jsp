@@ -11,8 +11,6 @@
 		<h1>MENU</h1>
 	</header>
 	
-	<div class="product-insert-btn">
-		<input type="button" value="상품 등록하기" onclick="location.href='admin/product_insert.jsp">
-	</div>
+	<a class="menu-insert-tag" href="./menu_insertform.jsp">menu insert</a>
 </body>
 </html>

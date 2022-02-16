@@ -17,3 +17,4 @@ function changeBody(value){
 			else if(value=="2")
 				location.href="admin_index.jsp?contentPage=admin_test.jsp";
 		}
+		

@@ -36,7 +36,7 @@ public class ProductDAO {
 			Class.forName(jdbc_driver);
 			conn = DriverManager.getConnection(jdbc_url, id, pw);
 			
-			String sql = "insert into user values(?, ?, ?, ?, ?, ?, ?)";
+			String sql = "insert into product values(?, ?, ?, ?, ?, (now()), ?)";
 			pstmt = conn.prepareStatement(sql);
 		
 			pstmt.setInt(1, product.getProductID());
@@ -44,8 +44,7 @@ public class ProductDAO {
 			pstmt.setInt(3, product.getProductPRICE());
 			pstmt.setInt(4, product.getProductSTOCK());
 			pstmt.setString(5, product.getProductINTRO());
-			pstmt.setString(6, product.getProductDATE());
-			pstmt.setString(7, product.getProductIMG());
+			pstmt.setString(6, product.getProductIMG());
 			
 			int update = pstmt.executeUpdate();
 			

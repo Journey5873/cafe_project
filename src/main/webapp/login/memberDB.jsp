@@ -17,6 +17,7 @@
 
 		UserDTO user_dto = new UserDTO();
 		UserDAO user_dao = new UserDAO();
+		
 
 		String user_id = request.getParameter("id");
 		String user_pwd = request.getParameter("pwd");

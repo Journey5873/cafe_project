@@ -15,7 +15,7 @@
 <meta charset="EUC-KR">
 <title>admin_index</title>
 <link href="./../css/index.css" rel="stylesheet" type="text/css" />
-<link href="./../css/admin_index.css" rel="stylesheet" type="text/css" />
+<link href="./../css/admin.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
