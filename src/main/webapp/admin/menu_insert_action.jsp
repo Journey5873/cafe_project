@@ -21,6 +21,7 @@
 
 			Integer product_id = Integer.parseInt(multi.getParameter("menu_id"));
 			String product_name = multi.getParameter("menu_name");
+			String product_category = multi.getParameter("menu_category");
 			Integer product_price = Integer.parseInt(multi.getParameter("menu_price"));
 			Integer product_stock  = Integer.parseInt(multi.getParameter("menu_stock"));
 			String product_intro = multi.getParameter("menu-intro");
@@ -29,6 +30,7 @@
 			
 			product_dto.setProductID(product_id);
 			product_dto.setProductNAME(product_name); 
+			product_dto.setProductCATEGORY(product_category);
 			product_dto.setProductPRICE(product_price );
 			product_dto.setProductSTOCK(product_stock);
 			product_dto.setProductINTRO(product_intro);

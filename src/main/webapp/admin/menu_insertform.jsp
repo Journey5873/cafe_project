@@ -23,6 +23,15 @@
 					<td><input type="text" name="menu_name"></td>
 				</tr>
 				<tr>
+					<th>menu category</th>
+					<td>
+						<select name="menu_category">
+							<option name="coffee">coffee</option>
+							<option name="dessert">dessert</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
 					<th>menu price</th>
 					<td><input type="text" name="menu_price"></td>
 				</tr>

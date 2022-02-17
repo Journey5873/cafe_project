@@ -36,15 +36,16 @@ public class ProductDAO {
 			Class.forName(jdbc_driver);
 			conn = DriverManager.getConnection(jdbc_url, id, pw);
 			
-			String sql = "insert into product values(?, ?, ?, ?, ?, (now()), ?)";
+			String sql = "insert into product values(?, ?, ?, ?, ?, ?, (now()), ?)";
 			pstmt = conn.prepareStatement(sql);
 		
 			pstmt.setInt(1, product.getProductID());
 			pstmt.setString(2, product.getProductNAME());
-			pstmt.setInt(3, product.getProductPRICE());
-			pstmt.setInt(4, product.getProductSTOCK());
-			pstmt.setString(5, product.getProductINTRO());
-			pstmt.setString(6, product.getProductIMG());
+			pstmt.setString(3, product.getProductCATEGORY());
+			pstmt.setInt(4, product.getProductPRICE());
+			pstmt.setInt(5, product.getProductSTOCK());
+			pstmt.setString(6, product.getProductINTRO());
+			pstmt.setString(7, product.getProductIMG());
 			
 			int update = pstmt.executeUpdate();
 			

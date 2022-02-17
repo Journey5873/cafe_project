@@ -3,6 +3,7 @@ package com.project.dto;
 public class ProductDTO {
 	private int productID;
 	private String productNAME;
+	private String productCATEGORY;
 	private int productPRICE;
 	private int productSTOCK;
 	private String productINTRO;
@@ -18,6 +19,12 @@ public class ProductDTO {
 	}
 	public void setProductNAME(String productNAME) {
 		this.productNAME = productNAME;
+	}
+	public String getProductCATEGORY() {
+		return productCATEGORY;
+	}
+	public void setProductCATEGORY(String productCATEGORY) {
+		this.productCATEGORY = productCATEGORY;
 	}
 	public int getProductPRICE() {
 		return productPRICE;
