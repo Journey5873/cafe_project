@@ -12,7 +12,7 @@
 			else if(value=="1")
 				location.href="index.jsp?contentPage=test.jsp";
 			else if(value=="2")
-				location.href="index.jsp?contentPage=test.jsp";
+				location.href="index.jsp?contentPage=./../product/menu.jsp";
 			else if(value=="3")
 				location.href="index.jsp?contentPage=test.jsp";
 		}

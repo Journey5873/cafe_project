@@ -37,6 +37,7 @@
 			product_dto.setProductIMG(fileRealName);
 			
 			product_dao.ProductInsert(product_dto);
+			
 		}catch(Exception e){
 			System.out.println(e);
 		}
