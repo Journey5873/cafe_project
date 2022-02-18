@@ -51,9 +51,8 @@ public class ProductDAO {
 	public void ProductInsert(ProductDTO product) {
 		connect();
 		
+		String sql = "insert into product values(?, ?, ?, ?, ?, ?, (now()), ?)";
 		try {
-			
-			String sql = "insert into product values(?, ?, ?, ?, ?, ?, (now()), ?)";
 			pstmt = conn.prepareStatement(sql);
 		
 			pstmt.setInt(1, product.getProductID());
@@ -74,6 +73,36 @@ public class ProductDAO {
 		}finally{
 			disconnect();
 		}
+	}
+	
+	public ProductDTO getProduct(int product_id) {
+		connect();
+
+		String sql = "select * from product where product_id=?";
+		ProductDTO product = new ProductDTO();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, product_id);
+			rs = pstmt.executeQuery();
+						
+			rs.next();
+			product.setProductID(rs.getInt("product_id"));
+			product.setProductNAME(rs.getString("product_name"));
+			product.setProductCATEGORY(rs.getString("product_category"));
+			product.setProductPRICE(rs.getInt("product_price"));
+			product.setProductSTOCK(rs.getInt("product_stock"));
+			product.setProductINTRO(rs.getString("product_intro"));
+			product.setProductIMG(rs.getString("product_img"));
+			rs.close();
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+		finally {
+			disconnect();
+		}
+		return product;
 	}
 	
 	
@@ -109,6 +138,7 @@ public class ProductDAO {
 		return coffeeList;
 	}
 	
+	//커피 목록을 DEsc로 가져오는 method - 나현
 	public ArrayList<ProductDTO> getProductCoffeeDescList(){
 		connect();
 		ArrayList<ProductDTO> coffeeList = new ArrayList<ProductDTO>();
@@ -178,6 +208,8 @@ public class ProductDAO {
     return dessertList;
     } 
 	
+	
+	//디저트 목록을 Desc로 가져오는 method - 민지
 	public ArrayList<ProductDTO> getProducts_dessertDesclist() { //상품목록
 
         ArrayList<ProductDTO> dessertList = new ArrayList<ProductDTO>();

@@ -27,23 +27,27 @@
 		ArrayList<ProductDTO> coffeeList =  product_dao.getProductCoffeeList();
 	%>
 	
-	<h2 class="coffee-text">
-		<span>-Coffee</span>
-	</h2>
-	
 	<div class="menu-container">
-		<div class="coffee-box">
-			<% for(int i = 0; i < coffeeList.size(); i++){
-				ProductDTO product = coffeeList.get(i);	
+		
+		<h2 class="coffee-text">
+			-Coffee
+		</h2>
+			
+		<ul class="coffee-outer">
+		
+			<%
+				for(ProductDTO menu : coffeeList){
 			%>
 
-			<div class="coffee">
-				<a><img alt="menu" src="./../images/<%=product.getProductIMG() %>"></a>
-				<%=product.getProductNAME() %>
-			</div>
+			<li class="coffee-inner">
+				<div class="coffee">
+					<a href="./../product/menu_detail.jsp?product_id=<%=menu.getProductID()%>"><img alt="menu" src="./../images/<%=menu.getProductIMG() %>"></a><br>
+					<%=menu.getProductNAME() %>
+				</div>
+			</li>
 			
-			<%} %>
-		</div>
+			<%} %>		
+		</ul>
 	</div>
 </body> 
 </html>
