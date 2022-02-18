@@ -75,6 +75,7 @@ public class ProductDAO {
 		}
 	}
 	
+	//특정 메뉴 가져오기 - 나현
 	public ProductDTO getProduct(int product_id) {
 		connect();
 
@@ -138,7 +139,7 @@ public class ProductDAO {
 		return coffeeList;
 	}
 	
-	//커피 목록을 DEsc로 가져오는 method - 나현
+	//커피 목록을 Desc로 가져오는 method - 나현
 	public ArrayList<ProductDTO> getProductCoffeeDescList(){
 		connect();
 		ArrayList<ProductDTO> coffeeList = new ArrayList<ProductDTO>();

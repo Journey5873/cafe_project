@@ -5,10 +5,19 @@
 	margin: 5em 10em;
 }
 
+.menu-detail-container{
+	margin: 8em 16em;
+}
+
+.menu-table{
+	width: 100%;
+	text-align: center;
+}
+
 .coffee-text{
 	margin: 30px 0px;
 	font-size: 30px;
-	font-weight: 400;
+	font-weight: bold;
 }
 
 .coffee-inner{
@@ -16,9 +25,34 @@
 	display: inline;
 }
 
-
 .coffee{
 	display: inline-block;
 	padding: 20px 10px;
 	text-align: center;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.hr_1{
+	width: 100%;
+	border-bottom: 3px solid black;
+}
+
+.menu-img{
+	width: 400px;
+	height: 430px;
+	margin-right: 50px;
+}
+
+#menu-name{
+	font-size: 3em;
+}
+
+.menu-name-span{
+	margin-bottom: 30px;
+}
+
+.menu_detail-text{
+	font-size: 1.3em;
+	font-weight: 700;
 }

@@ -20,6 +20,8 @@
 <script type="text/javascript" src="./../js/product.js"></script>
 </head>
 <body>			
+
+	<!-- 나현 -->
 	<%
 		ProductDTO product_dto = new ProductDTO();
 		ProductDAO product_dao = new ProductDAO();
@@ -30,7 +32,7 @@
 	<div class="menu-container">
 		
 		<h2 class="coffee-text">
-			-Coffee
+			-COFFEE
 		</h2>
 			
 		<ul class="coffee-outer">
@@ -42,7 +44,8 @@
 			<li class="coffee-inner">
 				<div class="coffee">
 					<a href="./../product/menu_detail.jsp?product_id=<%=menu.getProductID()%>"><img alt="menu" src="./../images/<%=menu.getProductIMG() %>"></a><br>
-					<%=menu.getProductNAME() %>
+					<%=menu.getProductNAME() %><br>
+					<%=menu.getProductPRICE() %>
 				</div>
 			</li>
 			
