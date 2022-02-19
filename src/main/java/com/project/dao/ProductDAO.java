@@ -138,40 +138,7 @@ public class ProductDAO {
 		}
 		return coffeeList;
 	}
-	
-	//커피 목록을 Desc로 가져오는 method - 나현
-	public ArrayList<ProductDTO> getProductCoffeeDescList(){
-		connect();
-		ArrayList<ProductDTO> coffeeList = new ArrayList<ProductDTO>();
-		
-		try {
-			String sql = "select * from product where product_category='coffee' order by price desc"
-					+ ";";
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				ProductDTO product = new ProductDTO();
-				
-				product.setProductID(rs.getInt("product_id"));
-				product.setProductNAME(rs.getString("product_name"));
-				product.setProductCATEGORY(rs.getString("product_category"));
-				product.setProductPRICE(rs.getInt("product_price"));
-				product.setProductSTOCK(rs.getInt("product_stock"));
-				product.setProductINTRO(rs.getString("product_intro"));
-				product.setProductIMG(rs.getString("product_img"));
-				
-				coffeeList.add(product);
-			}
-			rs.close();
-		}catch (Exception e) {
-			System.out.println(e);
-		}finally {
-			disconnect();
-		}
-		return coffeeList;
-	}
-	
+
 	
 	//디저트 목록을 가져오는 method - 민지
 	public ArrayList<ProductDTO> getProducts_dessertlist() { //상품목록
@@ -187,21 +154,22 @@ public class ProductDAO {
 
             rs = pstmt.executeQuery();
 
+            while(rs.next()) {
 
-            ProductDTO product = new ProductDTO();
-
-            product.setProductID(rs.getInt("product_id"));
-            product.setProductNAME(rs.getString("product_name"));
-            product.setProductCATEGORY(rs.getString("product_category"));
-            product.setProductPRICE(rs.getInt("product_price"));
-            product.setProductSTOCK(rs.getInt("product_stock"));
-            product.setProductINTRO(rs.getString("product_intro"));
-            product.setProductIMG(rs.getString("product_img"));
-
-            dessertList.add(product);
-
-
-        rs.close();
+    			ProductDTO product = new ProductDTO();
+    			
+    			product.setProductID(rs.getInt("product_id"));
+    			product.setProductNAME(rs.getString("product_name"));
+    			product.setProductCATEGORY(rs.getString("product_category"));
+    			product.setProductPRICE(rs.getInt("product_price"));
+    			product.setProductSTOCK(rs.getInt("product_stock"));
+    			product.setProductINTRO(rs.getString("product_intro"));
+    			product.setProductIMG(rs.getString("product_img"));
+    			
+    			dessertList.add(product);
+    		
+    			}
+    		rs.close();
 
     }catch (Exception e) {
         System.out.println(e);
@@ -209,41 +177,146 @@ public class ProductDAO {
     return dessertList;
     } 
 	
-	
-	//디저트 목록을 Desc로 가져오는 method - 민지
-	public ArrayList<ProductDTO> getProducts_dessertDesclist() { //상품목록
+	public ArrayList<ProductDTO> getCoffeeDESC(){//coffee 높은 가격순
+        
+		
+        ArrayList<ProductDTO> coffeeDESC = new ArrayList<ProductDTO>();
 
-        ArrayList<ProductDTO> dessertList = new ArrayList<ProductDTO>();
         try {
-
-            Class.forName(jdbc_driver);
-            conn = DriverManager.getConnection(jdbc_url, id, pw);
-
-            String sql = "SELECT * FROM product where product_category='dessert' order by price desc";
+    		Class.forName(jdbc_driver);
+    		conn = DriverManager.getConnection(jdbc_url, id, pw);
+    		
+            String sql = "select * from product where product_category='coffee' order by product_price desc";
             pstmt = conn.prepareStatement(sql);
-
             rs = pstmt.executeQuery();
 
+            while(rs.next()) {
+                ProductDTO product = new ProductDTO();
 
-            ProductDTO product = new ProductDTO();
+                product.setProductID(rs.getInt("product_id"));
+                product.setProductNAME(rs.getString("product_name"));
+                product.setProductCATEGORY(rs.getString("product_category"));
+                product.setProductPRICE(rs.getInt("product_price"));
+                product.setProductSTOCK(rs.getInt("product_stock"));
+                product.setProductINTRO(rs.getString("product_intro"));
+                product.setProductIMG(rs.getString("product_img"));
 
-            product.setProductID(rs.getInt("product_id"));
-            product.setProductNAME(rs.getString("product_name"));
-            product.setProductCATEGORY(rs.getString("product_category"));
-            product.setProductPRICE(rs.getInt("product_price"));
-            product.setProductSTOCK(rs.getInt("product_stock"));
-            product.setProductINTRO(rs.getString("product_intro"));
-            product.setProductIMG(rs.getString("product_img"));
-
-            dessertList.add(product);
-
-
-        rs.close();
-
-    }catch (Exception e) {
-        System.out.println(e);
+                coffeeDESC.add(product);
+            }
+            rs.close();
+        }catch (Exception e) {
+            System.out.println(e);
+        }
+        return coffeeDESC;
     }
-    return dessertList;
-    } 
+	
+	public ArrayList<ProductDTO> getdessertDESC() { //dessert 높은 가격순
 
+		ArrayList<ProductDTO> desserDESC = new ArrayList<ProductDTO>();
+		try {
+			
+			Class.forName(jdbc_driver);
+			conn = DriverManager.getConnection(jdbc_url, id, pw);
+			
+			String sql = "select * from product where product_category='dessert' order by product_price desc";
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+
+			ProductDTO product = new ProductDTO();
+			
+			product.setProductID(rs.getInt("product_id"));
+			product.setProductNAME(rs.getString("product_name"));
+			product.setProductCATEGORY(rs.getString("product_category"));
+			product.setProductPRICE(rs.getInt("product_price"));
+			product.setProductSTOCK(rs.getInt("product_stock"));
+			product.setProductINTRO(rs.getString("product_intro"));
+			product.setProductIMG(rs.getString("product_img"));
+			
+			desserDESC.add(product);
+		
+			}
+		rs.close();
+
+	}catch (Exception e) {
+        System.out.println(e);
+	}
+   
+	return desserDESC;
+
+	}
+	
+	public ArrayList<ProductDTO> getCoffeeASC(){//coffee 낮은 가격순
+        
+		
+        ArrayList<ProductDTO> coffeeASC = new ArrayList<ProductDTO>();
+
+        try {
+    		Class.forName(jdbc_driver);
+    		conn = DriverManager.getConnection(jdbc_url, id, pw);
+    		
+            String sql = "select * from product where product_category='coffee' order by product_price";
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+
+            while(rs.next()) {
+                ProductDTO product = new ProductDTO();
+
+                product.setProductID(rs.getInt("product_id"));
+                product.setProductNAME(rs.getString("product_name"));
+                product.setProductCATEGORY(rs.getString("product_category"));
+                product.setProductPRICE(rs.getInt("product_price"));
+                product.setProductSTOCK(rs.getInt("product_stock"));
+                product.setProductINTRO(rs.getString("product_intro"));
+                product.setProductIMG(rs.getString("product_img"));
+
+                coffeeASC.add(product);
+            }
+            rs.close();
+        }catch (Exception e) {
+            System.out.println(e);
+        }
+        return coffeeASC;
+    }
+	
+	public ArrayList<ProductDTO> getdessertASC() { //dessert 낮은 가격순
+
+		ArrayList<ProductDTO> dessertASC = new ArrayList<ProductDTO>();
+		try {
+			
+			Class.forName(jdbc_driver);
+			conn = DriverManager.getConnection(jdbc_url, id, pw);
+			
+			String sql = "select * from product where product_category='dessert' order by product_price";
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+
+			ProductDTO product = new ProductDTO();
+			
+			product.setProductID(rs.getInt("product_id"));
+			product.setProductNAME(rs.getString("product_name"));
+			product.setProductCATEGORY(rs.getString("product_category"));
+			product.setProductPRICE(rs.getInt("product_price"));
+			product.setProductSTOCK(rs.getInt("product_stock"));
+			product.setProductINTRO(rs.getString("product_intro"));
+			product.setProductIMG(rs.getString("product_img"));
+			
+			dessertASC.add(product);
+		
+			}
+		rs.close();
+
+	}catch (Exception e) {
+        System.out.println(e);
+	}
+   
+	return dessertASC;
+
+	}
+	
 }

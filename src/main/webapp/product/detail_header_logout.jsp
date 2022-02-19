@@ -1,3 +1,5 @@
+<!-- ÀÎ³ªÇö -->
+
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -7,11 +9,11 @@
 <title></title>
 </head>
 <body>
-	<div class="text-box">
-		<span class="header-menu" onclick="changeView1(0)">HOME</span>
-		<span class="header-menu" onclick="changeView1(1)">ABOUT US</span>
-		<a id="menu-tag"><span class="header-menu" onclick="changeView1(2)">MENU</span></a>
-		<span class="header-menu" onclick="changeView1(3)">NOTICE BOARD</span>
+	<div align="center" class="text-box">
+			<a class="detail-header-menu" href="./../index/index.jsp" >HOME</a>
+			<a class="detail-header-menu" href="./../index/index.jsp" >ABOUT US</a>
+			<a class="detail-header-menu" href="./../index/index.jsp?contentPage=./../product/menu.jsp" >MENU</a>
+			<a class="detail-header-menu" href="./../index/index.jsp" >NOTICE BOARD</a>
 	</div>
 	
 	<div class="logo-box">

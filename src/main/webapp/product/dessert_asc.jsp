@@ -1,11 +1,10 @@
-<!-- 인나현 -->
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% request.setCharacterEncoding("utf-8"); %>
-<%@ page import="java.util.ArrayList"%>
+ <% request.setCharacterEncoding("UTF-8"); %>
 <%@ page import="com.project.dto.ProductDTO"%>
 <%@ page import="com.project.dao.ProductDAO" %>
+<%@ page import="java.io.PrintWriter"%>
+ <%@ page import="java.util.ArrayList"%>
 
 <!DOCTYPE html>
 <html>
@@ -16,24 +15,21 @@
 <link href="./../css/product.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="./../js/product.js"></script>
 </head>
-<body>			
+<body>
+
+<!-- 정민지 -->
 	<%
-		ProductDTO product_dto = new ProductDTO();
-		ProductDAO product_dao = new ProductDAO();
+		ProductDTO dto = new ProductDTO();
+		ProductDAO dao = new ProductDAO();
 	
-		ArrayList<ProductDTO> coffeeList =  product_dao.getProductCoffeeList();
-		ArrayList<ProductDTO> dessertList =  product_dao.getProducts_dessertlist();
+		ArrayList<ProductDTO> dessertList =  dao.getdessertASC();// 가격 낮은순 정렬
 	%>
 	
 	<div class="menu-container">
-		<a name="menu-tag"></a>	
-		<h2 class="coffee-text">
-			-COFFEE
-		</h2>
 		
-		<div class="dessert-page-aTag-box">
-            <a class="dessert-aTag"  href ="#dessert-box">DESSERT</a>  
-        </div>
+		<h2 class="coffee-text">
+			-Dessert
+		</h2>
 		
 		<select name="sort"  onchange="sort(this.value);">	
 			<option name="selected-sort">정렬선택</option>
@@ -43,32 +39,6 @@
 			<option name="sort-desc" value="dessert_desc">디저트 높은가격순</option>
 		</select>	
 		
-		<ul class="coffee-outer">			
-			<%
-				for(ProductDTO menu : coffeeList){
-			%>
-
-			<li class="coffee-inner">
-				<div class="coffee">
-					<a href="./../product/menu_detail.jsp?product_id=<%=menu.getProductID()%>"><img alt="menu" src="./../images/<%=menu.getProductIMG() %>"></a><br>
-					<%=menu.getProductNAME() %><br>
-					<%=menu.getProductPRICE() %>
-				</div>
-			</li>
-			
-			<%} %>				
-				
-		</ul>			
-		
-	</div>
-	
-	
-	<div class="menu-container">
-		<a name="dessert-box"></a>
-		<h2 class="coffee-text">
-			-Dessert
-		</h2>
-			
 		<ul class="coffee-outer">
 		
 			<%
