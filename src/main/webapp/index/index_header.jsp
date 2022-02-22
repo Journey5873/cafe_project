@@ -14,7 +14,13 @@
 			else if(value=="2")
 				location.href="index.jsp?contentPage=./../product/menu.jsp";
 			else if(value=="3")
-				location.href="index.jsp?contentPage=test.jsp";
+				location.href="./../qanda/list.jsp";
+			else if(value=="4"){						//
+				alert("회원에게만 글쓰기 권한이 있습니다.");		//
+				location.href="./../login/login.jsp";  	//
+			}
+			else if(value=="5") 
+				location.href="index.jsp?contentPage=../review/reviewList.jsp";
 		}
 </script>
 </head>

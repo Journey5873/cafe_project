@@ -1,11 +1,11 @@
 package com.project.dao;
 
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import com.project.dto.*;
 
@@ -319,4 +319,75 @@ public class ProductDAO {
 
 	}
 	
+	// 메뉴 이미지 경로 반환하는 함수
+	public String imageSrc(String productName) {
+		String src = null;
+		try {
+			Class.forName(jdbc_driver);
+			conn = DriverManager.getConnection(jdbc_url, id, pw);
+			
+			String sql = "select product_img from product where product_name=?;";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, productName);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				src=rs.getString(1);
+			}
+			return src;
+		}
+		catch(Exception e) {
+			System.out.println(e);
+		}
+		return src;
+	}
+	
+	// 메뉴 이미지 반환하는 함수
+	public String productIntro(String productName) {
+		try {
+			Class.forName(jdbc_driver);
+			conn = DriverManager.getConnection(jdbc_url, id, pw);
+			
+			String sql = "select product_intro from product where product_name=?;";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, productName);
+			rs = pstmt.executeQuery();
+			
+			String intro=null;
+			while(rs.next()) {
+				intro=rs.getString("product_intro");
+			}
+			return intro;
+		}
+		catch(Exception e) {
+			System.out.println(e);
+		}
+		return null;
+	}
+	
+	// 메뉴 이름 반환하는 함수
+	public int findProductID(String productName) {
+		try {
+			Class.forName(jdbc_driver);
+			conn = DriverManager.getConnection(jdbc_url, id, pw);
+			
+			String sql = "select product_id from product where product_name = ?;";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, productName);
+			rs = pstmt.executeQuery();
+			
+			int productId = -1;
+			while(rs.next()) {
+				productId=rs.getInt("product_id");
+			}
+			return productId;
+		}
+		catch(Exception e) {
+			System.out.println(e);
+		}
+		return -1; // 데이터베이스 오류
+	}
 }

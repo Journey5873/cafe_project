@@ -109,6 +109,21 @@
 	height: 30p;
 }
 
+
+.btn-box{
+	display: flex;
+}
+
+.cart-btn{
+	width: 50%;
+	padding-right: 2px;
+}
+
+.oder-btn{
+	flex-grow: 1;
+	padding-left: 2px;
+}
+
 .detail-submit{
 	background-color: black;
     border:none;
