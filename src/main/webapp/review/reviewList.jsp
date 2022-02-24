@@ -37,7 +37,7 @@
 		padding: 30px 0;
 		vertical-align: middle;
 		border-bottom: 1px solid #eeeeee;
-		width: 75%;
+		width: 70%;
 		position: relative;
 		margin: 30px 0 0;
 		border: 1px solid #eeeeee;

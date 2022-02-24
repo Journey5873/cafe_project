@@ -42,8 +42,9 @@
 	padding-right: 30px;
 }
 
-.menu-detail-container{
-	margin: 80px 100px 96px 300px;
+.detail-form{ /*수정*/
+	width: 90%;
+	margin: 50px 0;
 }
 
 .dessert-page-aTag-box{
@@ -109,7 +110,7 @@
 	height: 30p;
 }
 
-
+/*추가, 수정*/
 .btn-box{
 	display: flex;
 }

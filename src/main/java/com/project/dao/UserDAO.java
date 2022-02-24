@@ -19,22 +19,35 @@ public class UserDAO {
 	private String id = "shun04321";
 	private String pw = "awstbs421!";
 	
-	public UserDAO() {
-		
-		try {
-			Class.forName(jdbc_driver);
-			conn = DriverManager.getConnection(jdbc_url, id, pw);
+	public UserDAO() {}
+	
+	//DB 연결 method
+		void connect() {
+			try {
+				Class.forName(jdbc_driver);
+				conn = DriverManager.getConnection(jdbc_url, id, pw);
+			}catch (Exception e) {
+				System.out.println(e);
+			}
 		}
-		catch(Exception e) {
-			System.out.println(e);
-		}
 		
-	}
+		void disconnect() {
+			if(pstmt != null) {
+				try{
+					pstmt.close();
+				}catch(Exception ignored){}
+			}
+			if(conn != null) {
+				try{
+					conn.close();
+				}catch(Exception ignored){}
+			}
+		}
 	
 	public void UserInsert(UserDTO user) {
+		connect();
+		
 		try {
-			Class.forName(jdbc_driver);
-			conn = DriverManager.getConnection(jdbc_url, id, pw);
 			
 			String sql = "insert into user values(?, ?, ?, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
@@ -54,17 +67,45 @@ public class UserDAO {
 		catch(Exception e) {
 			System.out.println(e);
 		}finally{
-			try{
-				pstmt.close();
-			}catch(Exception ignored){}
-			try{
-				conn.close();
-			}catch(Exception ignored){}
+			disconnect();
 		}
+	}
+	
+	
+	//user 객체 반환 - 추가
+	public UserDTO getUserInfo(String user_id) {
+		connect();
+		
+		String sql = "select * from user where user_id=?";
+		UserDTO user = new UserDTO();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, user_id);
+			rs = pstmt.executeQuery();
+			
+			rs.next();
+			user.setUserID(rs.getString("user_id"));
+			user.setUserPW(rs.getString("user_pwd"));
+			user.setUserName(rs.getString("user_name"));
+			user.setUser_address(rs.getString("user_address"));
+			user.setUser_phone(rs.getString("user_phonenum"));
+			user.setUser_email(rs.getString("user_email"));
+			rs.close();
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+		finally {
+			disconnect();
+		}
+		return user;
 	}
 	
 	//로그인 진행하는 함수
 	public int login(String user_id, String user_pwd) {
+		connect();
+		
 		String sql = "SELECT user_pwd FROM user where user_id = ?";
 		
 		try {
@@ -80,18 +121,16 @@ public class UserDAO {
 			return -1; //존재하지 않는 아이디
 		}catch (Exception e) {
 			System.out.println(e);// TODO: handle exception
-		}finally{
-			try{
-				pstmt.close();
-			}catch(Exception ignored){}
-			try{
-				conn.close();
-			}catch(Exception ignored){}
 		}
-		return -2; //데이터 베이스 오료
+		finally {
+			disconnect();
+		}
+		return -2; //데이터 베이스 오류
 	}
 	
 	public boolean resign(String user_id, String user_pwd) {
+		connect();
+		
 		String sql = "DELETE FROM user WHERE user_id = ?";
 		
 		try {
@@ -109,12 +148,7 @@ public class UserDAO {
 		}catch (Exception e) {
 			System.out.println(e);// TODO: handle exception
 		}finally{
-			try{
-				pstmt.close();
-			}catch(Exception ignored){}
-			try{
-				conn.close();
-			}catch(Exception ignored){}
+			disconnect();
 		}
 		return false;
 	}

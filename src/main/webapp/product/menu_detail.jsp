@@ -1,4 +1,3 @@
-<!-- 인나현, 정채원 -->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -38,11 +37,11 @@ ProductDTO product_dto = product_dao.getProduct(Integer.parseInt(product_id));
 		</div>
 	</header>
 	
-	<div class="menu-detail-container">
-		<form class="detail-form" action="../cart/cart_insert_action.jsp" method="post">
+	<div class="menu-detail-container" width=100% align="center"> <!-- style 수정, product.css 수정 -->
+		<form class="detail-form" action="" method="post">
 			
-			<!-- cart_action에 값을 전달해주기 위해 hidden 사용 -->
-			<input type="hidden" name="menu_id" value="<%=product_dto.getProductID()%>"> <!-- 바뀐부분 -->
+			<!-- 값을 전달해주기 위해 hidden 사용 -->
+			<input type="hidden" name="product_id" value="<%=product_dto.getProductID()%>"> <!-- 수정 -->
 		
 			<div class="menu-detail-img-box">
 				<img class="menu-img" alt="menu" src="./../images/<%=product_dto.getProductIMG() %>">
@@ -56,7 +55,7 @@ ProductDTO product_dto = product_dao.getProduct(Integer.parseInt(product_id));
 				<div class="detail-price"><%=product_dto.getProductPRICE() %>원</div>
 				<div class="detail-intro"><%=product_dto.getProductINTRO() %></div>
 				<div class="detail-quantity">
-					수량 선택: <input class="input-number" type="number" min="1" max="<%=product_dto.getProductSTOCK()%>" name="menu_qty"> <!-- 바뀐부분 -->
+					수량 선택: <input class="input-number" type="number" value="1" min="1" max="<%=product_dto.getProductSTOCK()%>" name="menu_qty"> <!-- 수정 -->
 					<hr class="hr_2">
 				</div>	
 				
@@ -85,7 +84,7 @@ ProductDTO product_dto = product_dao.getProduct(Integer.parseInt(product_id));
 				 		</div>
 				 		
 				 		<div class="oder-btn">
-				 			<input class="detail-submit" type="submit" value="ORDER" onclick="javascript: form.action='../order/order_insert_action.jsp';">
+				 			<input class="detail-submit" type="submit" value="ORDER NOW" onclick="javascript: form.action='../order/orderForm.jsp';">
 				 		</div>
 				 	</div>
 				    <%} %>
@@ -95,7 +94,7 @@ ProductDTO product_dto = product_dao.getProduct(Integer.parseInt(product_id));
 			</div>
 			
 		</form>		
-
+		
 	</div>
 	
 </body>

@@ -14,6 +14,7 @@
 			<a class="detail-header-menu" href="./../index/index.jsp" >ABOUT US</a>
 			<a class="detail-header-menu" href="./../index/index.jsp?contentPage=./../product/menu.jsp" >MENU</a>
 			<a class="detail-header-menu" href="./../qanda/list.jsp" >Q&A</a>
+			<a class="detail-header-menu" href="./../index/index.jsp?contentPage=../review/reviewList.jsp" >REVIEW</a>
 	</div>
 	
 	<div class="logo-box">

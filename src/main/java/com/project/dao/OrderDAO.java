@@ -54,7 +54,7 @@ public class OrderDAO {
 	// 주문번호(order_id) 부여 메소드
 	public int getNext() {
 		//현재 리뷰 게시판을 내림차순으로 조회하여 가장 마지막 글의 번호를 구한다
-		String sql = "select order_id from order order by order_id desc";
+		String sql = "select order_id from orders order by order_id desc";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -68,8 +68,8 @@ public class OrderDAO {
 		return -1; //데이터베이스 오류
 	}
 	
-	// order_detail 테이블에 개별 주문 상품 등록
-	public int insertOrderDetail(OrderDetailDTO orderdetail, String userId, int orderId) {
+	// order_detail 테이블에 개별 주문 상품 등록 - 수정
+	public int insertOrderDetail(OrderDetailDTO orderdetail) {
 		try {
 			Class.forName(jdbc_driver);
 			conn = DriverManager.getConnection(jdbc_url, id, pw);
@@ -77,11 +77,11 @@ public class OrderDAO {
 			String sql = "insert into order_detail values(?, ?, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setInt(1, orderdetail.getDetailNUM());
-			pstmt.setString(2, userId);
-			pstmt.setInt(3, orderId);
-			pstmt.setInt(4, orderdetail.getProductID());
-			pstmt.setInt(5, 0);
+			pstmt.setString(1, orderdetail.getUserID());
+			pstmt.setInt(2, orderdetail.getOrderID());
+			pstmt.setInt(3, orderdetail.getProductID());
+			pstmt.setInt(4, orderdetail.getDetailNUM());
+			pstmt.setInt(5, orderdetail.getWriteREVIEW());
 			
 			return pstmt.executeUpdate();
 		}
@@ -91,26 +91,28 @@ public class OrderDAO {
 		return -1; // 데이터 베이스 오류
 	}
 	
-	// 주문 등록 메소드
-	public int insertOrder(String userId) {
+	// 주문 등록 메소드 - 수정
+	public int insertOrder(OrderDTO order_dto) {
 		try {
 			Class.forName(jdbc_driver);
 			conn = DriverManager.getConnection(jdbc_url, id, pw);
 
-			String sql = "insert into order values(?, ?, ?)";
+			String sql = "insert into orders values(?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 			
-			int orderId = getNext();
-			pstmt.setInt(1, orderId);
-			pstmt.setString(2, getDate());
-			pstmt.setString(3, userId);
+
+			pstmt.setString(1, order_dto.getUserID());
+			pstmt.setInt(2, order_dto.getOrderID());
+			pstmt.setString(3, order_dto.getOrderDate());
 			
 			int update = pstmt.executeUpdate();
 			
 			if(update == 0) System.out.println("DB 업데이트 실패");
 			else System.out.println("DB 업데이트 성공");
 			
-			return orderId;
+			return order_dto.getOrderID();
+			
+			
 		}
 		catch(Exception e) {
 			System.out.println(e);
@@ -124,12 +126,12 @@ public class OrderDAO {
 			Class.forName(jdbc_driver);
 			conn = DriverManager.getConnection(jdbc_url, id, pw);
 
-			String sql = "select count(*) from order_detail where order_user_user_id= ? and write_review=0;";
+			String sql = "select count(*) from `order_detail` where 'user_id' = ? and 'write_review' =0;";
 			pstmt = conn.prepareStatement(sql);
-			
 			pstmt.setString(1, userId);
-					
+			
 			rs = pstmt.executeQuery();
+			
 			if(rs.next()) {
 				if(rs.getInt(1) == 0) return 0; // 구매 X or 작성할 리뷰 X
 				else return 1; // 리뷰 작성 가능
@@ -148,7 +150,7 @@ public class OrderDAO {
 			Class.forName(jdbc_driver);
 			conn = DriverManager.getConnection(jdbc_url, id, pw);
 
-			String sql = "select * from order_detail where order_user_user_id= ? and write_review=0;";
+			String sql = "select * from order_detail where 'user_id' = ? and write_review=0;";
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, userId);
@@ -161,9 +163,9 @@ public class OrderDAO {
 				OrderDetailDTO detail = new OrderDetailDTO();
 				
 				detail.setDetailNUM(rs.getInt("detail_num"));
-				detail.setUserID(rs.getString("order_user_user_id"));
-				detail.setOrderID(rs.getInt("order_order_id"));
-				detail.setProductID(rs.getInt("product_product_id"));
+				detail.setUserID(rs.getString("user_id"));
+				detail.setOrderID(rs.getInt("order_id"));
+				detail.setProductID(rs.getInt("product_id"));
 				detail.setWriteREVIEW(rs.getInt("write_review"));
 				list.add(detail);
 			}		
@@ -180,7 +182,7 @@ public class OrderDAO {
 			Class.forName(jdbc_driver);
 			conn = DriverManager.getConnection(jdbc_url, id, pw);
 
-			String sql = "select * from product as p join order_detail as d on p.product_id=d.product_product_id where p.product_id=?;";
+			String sql = "select * from product as p join order_detail as d on p.product_id= 'd.product_product_id' where p.product_id=?;";
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, productId);
@@ -206,10 +208,10 @@ public class OrderDAO {
 			Class.forName(jdbc_driver);
 			conn = DriverManager.getConnection(jdbc_url, id, pw);
 
-			String sql = "select min(order_order_id) \r\n"
+			String sql = "select min('order_id') \r\n"
 					+ "from `order_detail` \r\n"
-					+ "where order_user_user_id = ? and write_review=0 and product_product_id=?\r\n"
-					+ "group by order_user_user_id;";
+					+ "where 'user_id' = ? and write_review=0 and 'product_id'=?\r\n"
+					+ "group by 'user_id';";
 			
 			pstmt = conn.prepareStatement(sql);
 			
@@ -230,5 +232,4 @@ public class OrderDAO {
 		return -1;
 	}
 }
-
 

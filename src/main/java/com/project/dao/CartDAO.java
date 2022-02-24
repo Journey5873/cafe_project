@@ -74,7 +74,6 @@ public class CartDAO {
 			pstmt.setInt(2, cart.getProduct_id());
 			rs = pstmt.executeQuery();
 
-
 			while(rs.next()) {
 				flag=rs.getInt(1);
 			}
@@ -137,7 +136,5 @@ public class CartDAO {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
+		
 }
