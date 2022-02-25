@@ -167,7 +167,7 @@ public class CartDAO {
 		return null;		
 	}
 
-	// cart 테이블에서 해당 product_id를 삭제
+	// cart 테이블에서 해당 product_id인 레코드를 삭제
 	public void CartDelete(String userId, int productId) {
 		connect();
 
@@ -182,5 +182,29 @@ public class CartDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public CartDTO cartByProductID(String userId, int productId){
+		try {
+			connect();
+
+			String sql = "select product_id, product_qty from cart where user_id = ? and product_id = ?;";
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, userId);
+			pstmt.setInt(2, productId);
+			rs = pstmt.executeQuery();
+
+			CartDTO cart_dto = new CartDTO();
+			
+			while(rs.next()) {
+				cart_dto.setProduct_id(rs.getInt("product_id"));
+				cart_dto.setProduct_qty(rs.getInt("product_qty"));			
+			}
+			return cart_dto;
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;		
 	}
 }

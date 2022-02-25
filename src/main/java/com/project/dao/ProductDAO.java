@@ -343,7 +343,7 @@ public class ProductDAO {
 		return src;
 	}
 	
-	// 메뉴 이미지 반환하는 함수
+	// 메뉴 소개 반환하는 함수
 	public String productIntro(String productName) {
 		try {
 			Class.forName(jdbc_driver);
@@ -390,4 +390,52 @@ public class ProductDAO {
 		}
 		return -1; // 데이터베이스 오류
 	}
+	
+	// 새로 추가한 부분 : 메뉴 이름 반환하는 함수
+		public String findProductName(int productId) {
+			try {
+				Class.forName(jdbc_driver);
+				conn = DriverManager.getConnection(jdbc_url, id, pw);
+				
+				String sql = "select product_name from product where product_id = ?;";
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setInt(1, productId);
+				rs = pstmt.executeQuery();
+				
+				String productName = null;
+				while(rs.next()) {
+					productName=rs.getString(1);
+				}
+				return productName;
+			}
+			catch(Exception e) {
+				System.out.println(e);
+			}
+			return null; // 데이터베이스 오류
+		}
+		
+		// 메뉴 가격 * 수량을 반환하는 함수
+		public int getPrice(String productName, int productQty) {
+			try {
+				Class.forName(jdbc_driver);
+				conn = DriverManager.getConnection(jdbc_url, id, pw);
+				
+				String sql = "select product_price from product where product_name = ?;";
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, productName);
+				rs = pstmt.executeQuery();
+				
+				int price = 0;
+				while(rs.next()) {
+					price=rs.getInt(1);
+				}
+				return price*productQty;
+			}
+			catch(Exception e) {
+				System.out.println(e);
+			}
+			return -1; // 데이터베이스 오류			
+		}
 }

@@ -18,7 +18,7 @@
 	</div>
 
 	<div class="logo-box">
-		<span class="welcom-id"><%=session.getAttribute("id") %>¥‘ æ»≥Á«œººø‰</span>
+		<a class="welcom-id" href="../index/index.jsp?contentPage=../cart/myCart.jsp"><span class="welcom-id"><%=session.getAttribute("id") %>¥‘ æ»≥Á«œººø‰</span></a>
 		<a class="mypage" href="./test.jsp">MY PAGE</a>
 	</div>
 	
