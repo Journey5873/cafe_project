@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
-<%@ page import="com.project.dto.*"%>
-<%@ page import="com.project.dao.*"%>
+<%@ page import="com.project.dto.*" %>
+<%@ page import="com.project.dao.*" %>
 
 <!DOCTYPE html>
 <html>
@@ -27,8 +27,8 @@
 		String reviewContent = request.getParameter("reviewContent"); // 리뷰내용
 		int grade = Integer.parseInt(request.getParameter("rating")); // 별점
 		
-		review_dto.setOrderID(orderId);
-		review_dto.setProductID(productId);
+		review_dto.setReview_orderID(orderId);
+		review_dto.setReview_productID(productId);
 		review_dto.setReview_content(reviewContent);
 		review_dto.setDate(writeData);
 		review_dto.setGrade(grade);

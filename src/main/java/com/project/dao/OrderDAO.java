@@ -99,7 +99,6 @@ public class OrderDAO {
 
 			String sql = "insert into orders values(?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
-			
 
 			pstmt.setString(1, order_dto.getUserID());
 			pstmt.setInt(2, order_dto.getOrderID());
@@ -126,7 +125,7 @@ public class OrderDAO {
 			Class.forName(jdbc_driver);
 			conn = DriverManager.getConnection(jdbc_url, id, pw);
 
-			String sql = "select count(*) from `order_detail` where 'user_id' = ? and 'write_review' =0;";
+			String sql = "select count(*) from `order_detail` where order_user_user_id = ? and write_review =0;";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, userId);
 			
@@ -150,7 +149,7 @@ public class OrderDAO {
 			Class.forName(jdbc_driver);
 			conn = DriverManager.getConnection(jdbc_url, id, pw);
 
-			String sql = "select * from order_detail where 'user_id' = ? and write_review=0;";
+			String sql = "select * from order_detail where order_user_user_id= ? and write_review=0;";
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, userId);
@@ -163,9 +162,9 @@ public class OrderDAO {
 				OrderDetailDTO detail = new OrderDetailDTO();
 				
 				detail.setDetailNUM(rs.getInt("detail_num"));
-				detail.setUserID(rs.getString("user_id"));
-				detail.setOrderID(rs.getInt("order_id"));
-				detail.setProductID(rs.getInt("product_id"));
+				detail.setUserID(rs.getString("order_user_user_id"));
+				detail.setOrderID(rs.getInt("order_order_id"));
+				detail.setProductID(rs.getInt("product_product_id"));
 				detail.setWriteREVIEW(rs.getInt("write_review"));
 				list.add(detail);
 			}		
@@ -177,12 +176,13 @@ public class OrderDAO {
 		return null;
 	}
 	
+	
 	public String findProductName(int productId) {
 		try {
 			Class.forName(jdbc_driver);
 			conn = DriverManager.getConnection(jdbc_url, id, pw);
 
-			String sql = "select * from product as p join order_detail as d on p.product_id= 'd.product_product_id' where p.product_id=?;";
+			String sql = "select * from product as p join order_detail as d on p.product_id=d.product_product_id where p.product_id=?;";
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, productId);
@@ -202,16 +202,17 @@ public class OrderDAO {
 		return null;
 	}
 	
+	
 	public int findOrderID(String userId, int productId) {
 		// order_detail 테이블에서 product_id가 같고 write_review가 0인 항목이 여러개일때 order_id가 가장 작은 것을 반환
 		try {
 			Class.forName(jdbc_driver);
 			conn = DriverManager.getConnection(jdbc_url, id, pw);
 
-			String sql = "select min('order_id') \r\n"
+			String sql = "select min(order_order_id) \r\n"
 					+ "from `order_detail` \r\n"
-					+ "where 'user_id' = ? and write_review=0 and 'product_id'=?\r\n"
-					+ "group by 'user_id';";
+					+ "where order_user_user_id = ? and write_review=0 and product_product_id=?\r\n"
+					+ "group by order_user_user_id;";
 			
 			pstmt = conn.prepareStatement(sql);
 			

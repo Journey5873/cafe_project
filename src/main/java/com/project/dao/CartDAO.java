@@ -64,25 +64,45 @@ public class CartDAO {
 	}
 
 	public int isinCart(CartDTO cart){
-		String sql = "select COUNT(*) from cart where user_id = ? and product_id = ?";
-		int flag = -1;
-
 		try {
-			pstmt = conn.prepareStatement(sql);
+			connect();
 
+			String sql = "select product_qty from cart where user_id=? and product_id=?;";
+
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, cart.getUser_id());
 			pstmt.setInt(2, cart.getProduct_id());
 			rs = pstmt.executeQuery();
 
-			while(rs.next()) {
-				flag=rs.getInt(1);
+			if(rs.next()) {
+				if(rs.getInt(1) == 0) return 0; // 구매 X or 작성할 리뷰 X
+				else return 1; // 이미 장바구니에 존재
 			}
+			return -1; //존재하지 않는 아이디
+		}
+		catch(Exception e) {
+			System.out.println(e);
+		}
+		return -1; // 데이터 베이스 오류
+	}
 
-			return flag; // 0 반환 = 해당 메뉴 cart에 없음 
+	// cart에 해당 메뉴가 있는 경우 실행할 함수
+	public void CartUpdate(CartDTO cart) {
+		try {
+			connect();
+
+			// 실제로 수정후 장바구니 페이지에도 변화 반영되는지 체크하기
+			String sql = "update cart set product_qty = ? where user_id = ? and product_id = ?;";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, cart.getProduct_qty());
+			pstmt.setString(2, cart.getUser_id());
+			pstmt.setInt(3,  cart.getProduct_id());
+			
+			int update = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		return flag;  // 데이터베이스 오류
 	}
 
 	// cart에 해당 메뉴가 없는 경우 실행할 함수
@@ -90,10 +110,11 @@ public class CartDAO {
 		connect();
 
 		int flag = isinCart(cart);
-		
-		if(flag==0)
-			CartUpdate(cart);  
 
+		if(flag==1) {
+			CartUpdate(cart);  
+			return;
+		}
 		try {
 			int cartId = getNext();
 			String sql = "insert into cart values(?, ?, ?, ?)";
@@ -116,25 +137,50 @@ public class CartDAO {
 		finally {
 			disconnect();
 		}
+
 	}
 
-	// cart에 해당 메뉴가 있는 경우 실행할 함수
-	public void CartUpdate(CartDTO cart) {
+	// cart 테이블의 모든 레코드를 반환하는 함수
+	public List<CartDTO> cartList(String userId){
+		try {
+			connect();
+
+			String sql = "select product_id, product_qty from cart where user_id = ?;";
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, userId);
+			rs = pstmt.executeQuery();
+
+			List<CartDTO> list = new ArrayList<CartDTO>();
+
+			while(rs.next()) {
+				CartDTO cart_dto = new CartDTO();
+
+				cart_dto.setProduct_id(rs.getInt("product_id"));
+				cart_dto.setProduct_qty(rs.getInt("product_qty"));			
+				list.add(cart_dto);
+			}
+			return list;
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;		
+	}
+
+	// cart 테이블에서 해당 product_id를 삭제
+	public void CartDelete(String userId, int productId) {
 		connect();
-		
-		// 실제로 수정후 장바구니 페이지에도 변화 반영되는지 체크하기
-		String sql = "update cart set product_qty = ? where user_id = ? and product_id = ?";
-		
+
+		String sql = "delete from cart where user_id = ? and product_id = ?;";
+
 		try {
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setInt(1, cart.getProduct_qty());
-			pstmt.setString(2, cart.getUser_id());
-			pstmt.setInt(3,  cart.getProduct_id());
-			rs = pstmt.executeQuery();
+			pstmt.setString(1, userId);
+			pstmt.setInt(2,  productId);
+			pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
-		
 }

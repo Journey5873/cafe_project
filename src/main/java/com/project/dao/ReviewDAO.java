@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.util.*;
+
 import com.project.dto.*;
 
 public class ReviewDAO {
@@ -58,8 +59,8 @@ public class ReviewDAO {
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setInt(1, getNext());
-			pstmt.setInt(2, review.getOrderID());
-			pstmt.setInt(3, review.getProductID());
+			pstmt.setInt(2, review.getReview_orderID());
+			pstmt.setInt(3, review.getReview_productID());
 			pstmt.setString(4, userID);
 			pstmt.setString(5, review.getReview_content());
 			pstmt.setTimestamp(6, review.getDate());
@@ -88,7 +89,7 @@ public class ReviewDAO {
 			Class.forName(jdbc_driver);
 			conn = DriverManager.getConnection(jdbc_url, id, pw);
 
-			String sql = "update order_detail set write_review=1 where order_id = ? and user_id = ? and product_id = ?;";
+			String sql = "update order_detail set write_review=1 where order_order_id = ? and order_user_user_id = ? and product_product_id = ?;";
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setInt(1, orderID);
@@ -108,7 +109,7 @@ public class ReviewDAO {
 			Class.forName(jdbc_driver);
 			conn = DriverManager.getConnection(jdbc_url, id, pw);
 
-			String sql = "select review_id, product_name, grade, user_id, review_date from review as r join product as p where r.product_id=p.product_id order by review_id desc limit ? offset ?;";
+			String sql = "select review_id, product_name, grade, user_id, review_date from review as r join product as p where r.review_product_id=p.product_id order by review_id desc limit ? offset ?;";
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setInt(1, nSizePerPage);
@@ -140,7 +141,7 @@ public class ReviewDAO {
 			Class.forName(jdbc_driver);
 			conn = DriverManager.getConnection(jdbc_url, id, pw);
 
-			String sql = "select review_id, product_name, grade, review_content, user_id, review_date from review as r join product as p where r.product_id=p.product_id and review_id =?;";
+			String sql = "select review_id, product_name, grade, review_content, user_id, review_date from review as r join product as p where r.review_product_id=p.product_id and review_id =?;";
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setInt(1, reviewID);

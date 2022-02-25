@@ -16,6 +16,7 @@ if (id == null) {
 // order_detail 테이블에서 로그인한 유저 아이디와 같은 행의 write_review가 0인 레코드가 있는지 검사
 //(없으면 reviewList.jsp로 이동 / 있으면 여러개의 product_id 중 하나 선택해서 폼 작성할 수 있도록 하기)
 OrderDAO order_dao = new OrderDAO();
+
 int flag = order_dao.isBought(id);
 
 if (flag == -1 || flag == 0) {
@@ -50,6 +51,7 @@ list = order_dao.orderList(id); // write_review 0인 주문들 반환
 }
 </style>
 <body>
+	<center>
 		<div class="chooseProduct">
 			<br>
 			<p class="selectProduct">리뷰를 작성할 상품을 선택하세요 :)</p>
@@ -59,13 +61,23 @@ list = order_dao.orderList(id); // write_review 0인 주문들 반환
 				<select name="product" style="width: 200px; height: 30px;">
 					<%
 					int orderId = 0;
+
+					ProductDAO product_dao = new ProductDAO();
+					ProductDTO product_dto = new ProductDTO();
+					
 					for (OrderDetailDTO o : list) {
-						String productName = order_dao.findProductName(o.getProductID());
-						out.println("<option>" + productName + "</option>");
+						product_dto = product_dao.getProduct(o.getProductID());
+						String product_name = product_dto.getProductNAME();
+						out.println("<option>" + product_name + "</option>");
+						//String productName = order_dao.findProductName(o.getProductID());
+						//out.println("<option>" + productName + "</option>");
 					}
 					%>
-				</select> <input type="submit" value="리뷰작성">
+				</select> 
+				<input type="hidden" name="product_id" value="<%=product_dto.getProductID()%>">
+				<input type="submit" value="리뷰작성">
 			</form>
 		</div>
+	</center>
 </body>
 </html>
