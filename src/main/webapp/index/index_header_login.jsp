@@ -19,7 +19,7 @@
 
 	<div class="logo-box">
 		<a class="welcom-id" href="../index/index.jsp?contentPage=../cart/myCart.jsp"><span class="welcom-id"><%=session.getAttribute("id") %>¥‘ æ»≥Á«œººø‰</span></a>
-		<a class="mypage" href="./test.jsp">MY PAGE</a>
+		<a class="mypage" href="./../mypage/mypage.jsp">MY PAGE</a>
 	</div>
 	
 </body>

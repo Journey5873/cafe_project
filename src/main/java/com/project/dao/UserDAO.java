@@ -152,4 +152,38 @@ public class UserDAO {
 		}
 		return false;
 	}
+	
+	public void UserModify(UserDTO user) { // 회원정보 수정
+		
+		String sql = "update user set user_pwd=?, user_name=?, user_address=?, user_phonenum=?, user_email=? where user_id=?";
+		
+		try {
+			Class.forName(jdbc_driver);
+			conn = DriverManager.getConnection(jdbc_url, id, pw);
+		
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, user.getUserPW());
+			pstmt.setString(2, user.getUserName());
+			pstmt.setString(3, user.getUser_address());
+			pstmt.setString(4, user.getUser_phone());
+			pstmt.setString(5, user.getUser_email());
+			pstmt.setString(6, user.getUserID());
+			
+			int update = pstmt.executeUpdate();
+			
+			if(update == 0) System.out.println("DB 업데이트 실패");
+			else System.out.println("DB 업데이트 성공");
+		}
+		catch(Exception e) {
+			System.out.println(e);
+		}finally{
+			try{
+				pstmt.close();
+			}catch(Exception ignored){}
+			try{
+				conn.close();
+			}catch(Exception ignored){}
+		}
+	}
 }
