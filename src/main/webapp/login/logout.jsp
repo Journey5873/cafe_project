@@ -15,7 +15,7 @@
 %>
 
 <script>
-	location.href = './../index/index.jsp';
+	location.href = './../indexFile/index.jsp';
 </script>
 
 

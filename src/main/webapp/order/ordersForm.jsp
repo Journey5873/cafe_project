@@ -132,7 +132,7 @@
 			
 			<table class="bin-table">
 				<tr>
-					<td height="30" align="left"><a href="../index/index.jsp?contentPage=./../product/menu.jsp" class="menu">MENU</a></td>
+					<td height="30" align="left"><a href="../indexFile/index.jsp?contentPage=./../product/menu.jsp" class="menu">MENU</a></td>
 					<td height="30" align="right"><input type="button" class="back" value="BACK" onclick="javascript: history.back();"></td>
 				</tr>
 			</table>

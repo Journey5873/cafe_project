@@ -21,6 +21,6 @@
 %>
 <script>
 	alert("해당 메뉴가 삭제 완료되었습니다 :)");
-	window.location.href="../index/index.jsp?contentPage=../cart/myCart.jsp";
+	window.location.href="../indexFile/index.jsp?contentPage=../cart/myCart.jsp";
 </script>
 

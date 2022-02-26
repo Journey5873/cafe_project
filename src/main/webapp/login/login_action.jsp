@@ -1,3 +1,4 @@
+<%@page import="com.mysql.cj.Session"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
 <%@ page import="com.project.dao.UserDAO"%>
@@ -46,10 +47,11 @@
 		script.println("</script>");
 	}else if(result == 2){ // 사용자페이지
 		session.setAttribute("id", userID);
+		session.setAttribute("password", userPassword);
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('로그인 성공')");
-		script.println("location.href='./../index/index.jsp'");
+		script.println("location.href='./../indexFile/index.jsp'");
 		script.println("</script>");
 	}
 	else if(result == 0){ //비밀번호 오류

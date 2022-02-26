@@ -17,7 +17,7 @@
 	<ul class="img-ul">
 		<li class="img-li">
 			<div class="prof">
-				<a href="../index/index.jsp?contentPage=./../mypage/modify.jsp"><img src="./../images/profile.png" id="img"></a><br>
+				<a href="../indexFile/index.jsp?contentPage=./../mypage/modify.jsp"><img src="./../images/profile.png" id="img"></a><br>
 				<h3>회원정보 수정</h3>
 			</div>
 		</li>	

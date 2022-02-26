@@ -333,7 +333,7 @@
 	<table width="75%" cellpadding="0" cellspacing="0" >
 		<tr>
 		<td height="30" align="left">
-			<a class="main" href="../index/index.jsp">MAIN</a>
+			<a class="main" href="../indexFile/index.jsp">MAIN</a>
 		</td>
 		<td height="30" align="right">
 			<a class="write" href="writeForm.jsp">WRITE</a>

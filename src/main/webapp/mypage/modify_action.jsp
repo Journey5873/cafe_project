@@ -51,7 +51,7 @@
 	<script>
       	alert("회원정보 수정 성공");
       	self.close();
-      	window.location.href="./../index/index.jsp?contentPage=./../mypage/mypage.jsp";
+      	window.location.href="./../indexFile/index.jsp?contentPage=./../mypage/mypage.jsp";
     </script>
 </body>
 </html>

@@ -44,7 +44,7 @@
 %>
 <script>
       	alert("곧 제품을 준비해 드리겠습니다:)");
-      	location.href="../index/index.jsp?contentPage=./../product/menu.jsp";
+      	location.href="../indexFile/index.jsp?contentPage=./../product/menu.jsp";
 </script>
 </body>
 </html>

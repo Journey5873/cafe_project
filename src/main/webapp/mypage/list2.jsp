@@ -281,10 +281,10 @@
 			<td width="100" height="75" align="center">
 			<%
 			if(rs.getInt("write_review") == 0){
-			%><a class="write" href="./../index/index.jsp?contentPage=./../review/chooseProduct.jsp">후기쓰기</a>
+			%><a class="write" href="./../indexFile/index.jsp?contentPage=./../review/chooseProduct.jsp">후기쓰기</a>
 			<%
 			}else if(rs.getInt("write_review") == 1){
- 			%><a class="view" href="./../index/index.jsp?contentPage=./../review/viewReview.jsp?reviewId=<%=rs.getInt("review_id")%>">후기보기</a>
+ 			%><a class="view" href="./../indexFile/index.jsp?contentPage=./../review/viewReview.jsp?reviewId=<%=rs.getInt("review_id")%>">후기보기</a>
 			<%} %>
 			</td>
 		</tr>
@@ -377,7 +377,7 @@
 	<table width="75%" cellpadding="0" cellspacing="0" >
 		<tr>
 		<td height="30" align="left">
-			<a class="main" href="./../index/index.jsp?contentPage=./../mypage/mypage.jsp">MYPAGE</a>
+			<a class="main" href="./../indexFile/index.jsp?contentPage=./../mypage/mypage.jsp">MYPAGE</a>
 		</td>
 		</tr>
 	</table>

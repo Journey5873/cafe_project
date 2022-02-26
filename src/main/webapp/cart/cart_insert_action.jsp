@@ -23,5 +23,5 @@
 	cart_dao.CartInsert(cart_dto);
 %>
 <script>
-   window.location.href="../index/index.jsp?contentPage=../cart/myCart.jsp";
+   window.location.href="../indexFile/index.jsp?contentPage=../cart/myCart.jsp";
 </script>

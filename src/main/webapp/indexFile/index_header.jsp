@@ -1,3 +1,5 @@
+<!-- 인나현, 정채원 -->
+
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>

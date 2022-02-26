@@ -52,7 +52,7 @@
 	<script>
       	alert("회원 가입 성공");
       	self.close();
-      	window.location.href="./../index/index.jsp";
+      	window.location.href="./../indexFile/index.jsp";
     </script>
 </body>
 </html>

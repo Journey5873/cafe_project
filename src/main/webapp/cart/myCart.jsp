@@ -119,7 +119,7 @@
 </style>
 <script>
 	function goToMenu(){
-		location.href = "../index/index.jsp?contentPage=../product/menu.jsp;"
+		location.href = "../indexFile/index.jsp?contentPage=../product/menu.jsp;"
 	}
 </script>
 </head>

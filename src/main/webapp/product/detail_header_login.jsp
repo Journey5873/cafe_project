@@ -12,15 +12,15 @@
 <body>
 
 	<div align="center" class="text-box">
-			<a class="detail-header-menu" href="./../index/index.jsp" >HOME</a>
-			<a class="detail-header-menu" href="./../index/index.jsp" >ABOUT US</a>
-			<a class="detail-header-menu" href="./../index/index.jsp?contentPage=./../product/menu.jsp" >MENU</a>
+			<a class="detail-header-menu" href="./../indexFile/index.jsp" >HOME</a>
+			<!--  <span class="header-menu" onclick="changeView1(1)" >ABOUT US</span> -->
+			<a class="detail-header-menu" href="./../indexFile/index.jsp?contentPage=./../product/menu.jsp" >MENU</a>
 			<a class="detail-header-menu" href="./../qanda/list.jsp" >Q&A</a>
-			<a class="detail-header-menu" href="./../index/index.jsp?contentPage=../review/reviewList.jsp" >REVIEW</a>
+			<a class="detail-header-menu" href="./../indexFile/index.jsp?contentPage=../review/reviewList.jsp" >REVIEW</a>
 	</div>
 
 	<div class="logo-box">
-		<a class="welcom-id" href="../index/index.jsp?contentPage=../cart/myCart.jsp"><span class="welcom-id"><%=session.getAttribute("id") %>¥‘ æ»≥Á«œººø‰</span></a>
+		<a class="welcom-id" href="../indexFile/index.jsp?contentPage=../cart/myCart.jsp"><span class="welcom-id"><%=session.getAttribute("id") %>¥‘ æ»≥Á«œººø‰</span></a>
 		<a class="mypage" href="./../mypage/list.jsp">MY PAGE</a>
 	</div>
 	

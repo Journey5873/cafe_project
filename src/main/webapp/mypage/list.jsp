@@ -113,7 +113,6 @@
 <script type="text/javascript">
 	function goPageMove(pageNum){
 		var frm = document.boardForm; 
-
 		frm.pageNum.value = pageNum;
 		frm.action="list.jsp";
 		frm.submit();
@@ -191,7 +190,6 @@
 		</tr>
 <%			
 			nFirstNcno = ((nPageNum -1) * nSizePerPage);
-
 			//out.write("nFirstNcno:" + nFirstNcno + "<br>");			
 			
 			strQuery = "SELECT";													//게시물 조회 쿼리
@@ -249,7 +247,6 @@
 			else {
 				name = name.replaceAll("(?<=.{1})." , "*");
 			}
-
 %>
 			<td width="100" align="center"><%= name %></td>
 			<td width="100" align="center"><%= rs.getString("qa_date").substring(0,10) %></td>
@@ -318,7 +315,6 @@
 			
 			if (tmpNum > nTotalPage) break;
 		}
-
 		if(nPageNum <= nTotalPage){
 			if(tmpNum > nTotalPage){
 %>
@@ -345,7 +341,7 @@
 	<table width="75%" cellpadding="0" cellspacing="0" >
 		<tr>
 		<td height="30" align="left">
-			<a class="main" href="./../index/index.jsp?contentPage=./../mypage/mypage.jsp">MYPAGE</a>
+			<a class="main" href="./../indexFile/index.jsp?contentPage=./../mypage/mypage.jsp">MYPAGE</a>
 		</td>
 		<td height="30" align="right">
 			<a class="write" href="writeForm.jsp">WRITE</a>

@@ -57,7 +57,7 @@ list = order_dao.orderList(id); // write_review 0인 주문들 반환
 			<p class="selectProduct">리뷰를 작성할 상품을 선택하세요 :)</p>
 			<br>
 			<form name="chooseProduct" method="post"
-				action="../index/index.jsp?contentPage=../review/reviewForm.jsp">
+				action="../indexFile/index.jsp?contentPage=../review/reviewForm.jsp">
 				<select name="product" style="width: 200px; height: 30px;">
 					<%
 					int orderId = 0;

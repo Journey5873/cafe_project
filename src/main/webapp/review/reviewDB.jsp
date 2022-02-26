@@ -42,7 +42,7 @@
 	<script>
       	alert("리뷰 작성 성공");
       	self.close();
-      	window.location.href="../index/index.jsp?contentPage=../review/reviewList.jsp";
+      	window.location.href="../indexFile/index.jsp?contentPage=../review/reviewList.jsp";
     </script>
 </body>
 </html>
